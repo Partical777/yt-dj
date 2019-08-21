@@ -77,9 +77,17 @@ span{
   color: #00ff9f;
 }
 
+#input1{
+  left: 7.5%;
+}
+
+#input2{
+  right: 7.5%;
+}
+
 input{
   font-size: 1em;
-  width: 75vw;
+  width: 30vw;
 }
 
 

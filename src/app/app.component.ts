@@ -23,18 +23,24 @@ export class AppComponent  {
   loop2 = true;
   shuffle2 = false;
 
-  volumn1 = 50;
+  volumn1 = 100;
   time1 = 0;
-  volumn2 = 50;
+  volumn2 = 0;
   time2 = 0;
 
 
 
-  Playlist = 'https://www.youtube.com/playlist?list=PLxySa8Rx-er9SUSOEbDh1KwguS2y9BL_D';
-  PlaylistID = "PLxySa8Rx-er9SUSOEbDh1KwguS2y9BL_D";
-  GenerateURL(){
-    this.PlaylistID = this.Playlist.slice(38);
-    this.player1.loadPlaylist({list : this.PlaylistID, index : 0});
+  Playlist1 = 'https://www.youtube.com/playlist?list=PLxySa8Rx-er9SUSOEbDh1KwguS2y9BL_D';
+  Playlist2 = 'https://www.youtube.com/playlist?list=PLxySa8Rx-er_crWm9uz9ETLVrPMpFBuX8';
+  PlaylistID1 = "PLxySa8Rx-er9SUSOEbDh1KwguS2y9BL_D";
+  PlaylistID2 = "PLxySa8Rx-er_crWm9uz9ETLVrPMpFBuX8";
+  GenerateURL1(){
+    this.PlaylistID1 = this.Playlist1.slice(38);
+    this.player1.loadPlaylist({list : this.PlaylistID1, index : 0});
+  }
+  GenerateURL2(){
+    this.PlaylistID2 = this.Playlist2.slice(38);
+    this.player2.loadPlaylist({list : this.PlaylistID2, index : 0});
   }
 
 
@@ -128,8 +134,8 @@ export class AppComponent  {
 
   nextVideo1() {
     this.player1.nextVideo();
-    document.getElementById('nextIcon').style.animation = "shine 1.0s 3 ease-in";
-    document.getElementById('nextIcon').addEventListener('webkitAnimationEnd', function(){
+    document.getElementById('nextIcon1').style.animation = "shine 1.0s 3 ease-in";
+    document.getElementById('nextIcon1').addEventListener('webkitAnimationEnd', function(){
         this.style.webkitAnimationName = '';
     }, false)
 
@@ -163,7 +169,7 @@ export class AppComponent  {
   changeVolumn1() {
     this.player1.setVolume(this.volumn1);
     //same time
-    this.volumn2 = 100 - this.volumn;
+    this.volumn2 = 100 - this.volumn1;
     this.player2.setVolume(this.volumn2);
   }
 

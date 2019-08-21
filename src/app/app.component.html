@@ -2,9 +2,14 @@
 <div>
   <!-- Playlist Iframe -->
   <!-- https://www.youtube.com/embed/ VIDEO_ID /videoseries?list=PLAYLIST_ID -->
-  <span>
-    Playlist
-    <input [value]="Playlist" (keyup.enter)="Playlist = $event.target.value;GenerateURL()">
+  <span id="input1">
+    Playlist1
+    <input [value]="Playlist1" (keyup.enter)="Playlist1 = $event.target.value;GenerateURL1()">
+  </span>
+
+  <span id="input2">
+    Playlist2
+    <input [value]="Playlist2" (keyup.enter)="Playlist2 = $event.target.value;GenerateURL2()">
   </span>
 
   <div id="video-placeholder1">
