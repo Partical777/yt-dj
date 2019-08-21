@@ -11,10 +11,11 @@ export class AppComponent  {
 
   constructor(public sanitizer: DomSanitizer){}
 
-  player;
+  player1;
   subscription: Subscription;
 
-  playing = true;
+  playing1 = true;
+  playing2 = false;
   loop = true;
   shuffle = false;
 
@@ -27,7 +28,7 @@ export class AppComponent  {
   PlaylistID = "PLxySa8Rx-er9SUSOEbDh1KwguS2y9BL_D";
   GenerateURL(){
     this.PlaylistID = this.Playlist.slice(38);
-    this.player.loadPlaylist({list : this.PlaylistID, index : 0});
+    this.player1.loadPlaylist({list : this.PlaylistID, index : 0});
   }
 
 
@@ -42,7 +43,7 @@ export class AppComponent  {
 
   ngOnInit() {
     (<any>window).onYouTubeIframeAPIReady = () => {
-      this.player = new (<any>window).YT.Player('player', {
+      this.player1 = new (<any>window).YT.Player('player1', {
         border: '5px solid red',
         height: '390',
         width: '640',
@@ -64,11 +65,11 @@ export class AppComponent  {
 
   onPlayerReady(event) {
     event.target.loadPlaylist({list : "PLxySa8Rx-er9SUSOEbDh1KwguS2y9BL_D", index : 0});
-    document.getElementById('player').style.width = "80vh";
-    document.getElementById('player').style.height = "46vh";
-    document.getElementById('player').style.position = "fixed";
-    document.getElementById('player').style.clipPath = "circle(30% at 50% 50%)";
-    document.getElementById('player').style.animation = "rotation 10s infinite linear";
+    document.getElementById('player1').style.width = "80vh";
+    document.getElementById('player1').style.height = "46vh";
+    document.getElementById('player1').style.position = "fixed";
+    document.getElementById('player1').style.clipPath = "circle(30% at 50% 50%)";
+    document.getElementById('player1').style.animation = "rotation 10s infinite linear";
   }
 
   
@@ -83,21 +84,21 @@ export class AppComponent  {
 
   
   playVideo() {
-    this.player.playVideo();
-    this.playing = true;
-    document.getElementById('player').style.animationPlayState = "running";
+    this.player1.playVideo();
+    this.playing1 = true;
+    document.getElementById('player1').style.animationPlayState = "running";
     document.getElementById('arm-image').style.animationPlayState = "running";
   }
 
   pauseVideo() {
-    this.playing = false;
-    this.player.pauseVideo();
-    document.getElementById('player').style.animationPlayState = "paused";
+    this.playing1 = false;
+    this.player1.pauseVideo();
+    document.getElementById('player1').style.animationPlayState = "paused";
     document.getElementById('arm-image').style.animationPlayState = "paused";
   }
 
   nextVideo() {
-    this.player.nextVideo();
+    this.player1.nextVideo();
     document.getElementById('nextIcon').style.animation = "shine 1.0s 3 ease-in";
     document.getElementById('nextIcon').addEventListener('webkitAnimationEnd', function(){
         this.style.webkitAnimationName = '';
@@ -109,7 +110,7 @@ export class AppComponent  {
   }
 
   previousVideo() {
-    this.player.previousVideo();
+    this.player1.previousVideo();
     document.getElementById('lastIcon').style.animation = "shine 1.0s 3 ease-in";
     document.getElementById('nextIcon').addEventListener('webkitAnimationEnd', function(){
         this.style.webkitAnimationName = '';
@@ -122,28 +123,28 @@ export class AppComponent  {
 
   loopSet() {
     this.loop = !this.loop;
-    this.player.setLoop(this.loop);
+    this.player1.setLoop(this.loop);
   }
 
   shuffleSet() {
     this.shuffle = !this.shuffle;
-    this.player.setShuffle(this.shuffle);
+    this.player1.setShuffle(this.shuffle);
   }
 
   changeVolumn() {
-    this.player.setVolume(this.volumn);
+    this.player1.setVolume(this.volumn);
   }
 
   getTimeTimely() {
-    this.time = this.player.getCurrentTime()/this.player.getDuration()*100;
+    this.time = this.player1.getCurrentTime()/this.player1.getDuration()*100;
   }
   
   changeCurrentTime(time){
-    this.player.seekTo(time / 100 * this.player.getDuration());
-    this.time = this.player.getCurrentTime()/this.player.getDuration()*100;
-    console.log(this.player.getCurrentTime()/this.player.getDuration()*100);
+    this.player1.seekTo(time / 100 * this.player1.getDuration());
+    this.time = this.player1.getCurrentTime()/this.player1.getDuration()*100;
+    console.log(this.player1.getCurrentTime()/this.player1.getDuration()*100);
 
-    document.getElementById('arm-image').style.animationDelay = "-" + this.player.getCurrentTime() + "s";
+    document.getElementById('arm-image').style.animationDelay = "-" + this.player1.getCurrentTime() + "s";
   }
   
 }
