@@ -1,0 +1,103 @@
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons&display=block" rel="stylesheet">
+<div>
+  <!-- Playlist Iframe -->
+  <!-- https://www.youtube.com/embed/ VIDEO_ID /videoseries?list=PLAYLIST_ID -->
+  <span>
+    Playlist
+    <input [value]="Playlist" (keyup.enter)="Playlist = $event.target.value;GenerateURL()">
+  </span>
+
+  <div id="video-placeholder1">
+    <img  class="bottom1" src="https://1.bp.blogspot.com/-IJc3LzR4a8I/XUpbDn095nI/AAAAAAAAn14/CuxD4Bpq7qETjKFkfY_GQXyMngXeK-LawCLcBGAs/s1600/bottom.png"/>
+    <!-- <iframe
+      id="yt1"
+      [src]="sanitizer.bypassSecurityTrustResourceUrl(PlaylistURL)"
+      frameborder="0"
+      allow="autoplay; encrypted-media"
+      allowfullscreen
+    ></iframe> -->
+    <div id="player"></div>
+    <img src="https://1.bp.blogspot.com/-VGQJBdRfkqs/XUpbDmdkqBI/AAAAAAAAn10/61UaWi8g84c0bdPQ4jtpdL4YuFWhZWegQCLcBGAs/s1600/core.png"/>
+    <!-- <img id="arm-image" class="arm-image" src="https://1.bp.blogspot.com/-14R_eiVJk0w/XUpbDuFRBsI/AAAAAAAAn18/MeiGKozodD0iad5WzYnJeLDMpWaExJ0RgCLcBGAs/s1600/arm.png"/> -->
+  </div>
+  <div id="video-placeholder2">
+    <img src="https://1.bp.blogspot.com/-IJc3LzR4a8I/XUpbDn095nI/AAAAAAAAn14/CuxD4Bpq7qETjKFkfY_GQXyMngXeK-LawCLcBGAs/s1600/bottom.png"/>
+    <!-- <iframe
+      id="yt1"
+      [src]="sanitizer.bypassSecurityTrustResourceUrl(PlaylistURL)"
+      frameborder="0"
+      allow="autoplay; encrypted-media"
+      allowfullscreen
+    ></iframe> -->
+    <div id="player"></div>
+    <img src="https://1.bp.blogspot.com/-VGQJBdRfkqs/XUpbDmdkqBI/AAAAAAAAn10/61UaWi8g84c0bdPQ4jtpdL4YuFWhZWegQCLcBGAs/s1600/core.png"/>
+    <!-- <img id="arm-image" class="arm-image" src="https://1.bp.blogspot.com/-14R_eiVJk0w/XUpbDuFRBsI/AAAAAAAAn18/MeiGKozodD0iad5WzYnJeLDMpWaExJ0RgCLcBGAs/s1600/arm.png"/> -->
+  </div>
+
+
+
+  <button mat-icon-button  class="button next1" (click)="nextVideo()">
+    <mat-icon id="nextIcon">skip_next</mat-icon>
+  </button>
+  
+  <button mat-icon-button  class="button last1" (click)="previousVideo()">
+    <mat-icon id="lastIcon">skip_previous</mat-icon>
+  </button>
+
+  <button mat-icon-button  class="button random1" (click)="shuffleSet()">
+    <mat-icon [style.color]="shuffle ? '#00ff9f' : '#000000'"
+              [style.text-shadow]="shuffle ? '0px 0px 6px #00ff9f' : '0px 0px 0px #00ff9f'">shuffle</mat-icon>
+  </button>
+  <button mat-icon-button  class="button loop1" (click)="loopSet()">
+    <mat-icon [style.color]="loop ? '#00ff9f' : '#000000'"
+              [style.text-shadow]="loop ? '0px 0px 6px #00ff9f' : '0px 0px 0px #00ff9f'">repeat</mat-icon>
+  </button>
+
+  <button mat-icon-button  id="play-button" class="button play1" (click)="playVideo()">
+    <mat-icon [style.color]="playing ? '#00ff9f' : '#000000'"
+              [style.text-shadow]="playing ? '0px 0px 6px #00ff9f' : '0px 0px 0px #00ff9f'">play_arrow</mat-icon>
+  </button>
+  <button mat-icon-button  id="pause-button" class="button stop1" (click)="pauseVideo()">
+    <mat-icon [style.color]="!playing ? '#00ff9f' : '#000000'"
+              [style.text-shadow]="!playing ? '0px 0px 6px #00ff9f' : '0px 0px 0px #00ff9f'">pause</mat-icon>
+  </button>
+
+
+  <input type="range" min="1" max="100" [(ngModel)]="time" class="sliderDutation1" (ngModelChange)="changeCurrentTime(time)">
+  
+  <input type="range" min="1" max="100" [(ngModel)]="volumn" class="sliderVloumn1" (ngModelChange)="changeVolumn()">
+
+  <!-- ===================================================================== -->
+
+  <button mat-icon-button  class="button next2" (click)="nextVideo()">
+    <mat-icon id="nextIcon">skip_next</mat-icon>
+  </button>
+  
+  <button mat-icon-button  class="button last2" (click)="previousVideo()">
+    <mat-icon id="lastIcon">skip_previous</mat-icon>
+  </button>
+
+  <button mat-icon-button  class="button random2" (click)="shuffleSet()">
+    <mat-icon [style.color]="shuffle ? '#00ff9f' : '#000000'"
+              [style.text-shadow]="shuffle ? '0px 0px 6px #00ff9f' : '0px 0px 0px #00ff9f'">shuffle</mat-icon>
+  </button>
+  <button mat-icon-button  class="button loop2" (click)="loopSet()">
+    <mat-icon [style.color]="loop ? '#00ff9f' : '#000000'"
+              [style.text-shadow]="loop ? '0px 0px 6px #00ff9f' : '0px 0px 0px #00ff9f'">repeat</mat-icon>
+  </button>
+
+  <button mat-icon-button  id="play-button" class="button play2" (click)="playVideo()">
+    <mat-icon [style.color]="playing ? '#00ff9f' : '#000000'"
+              [style.text-shadow]="playing ? '0px 0px 6px #00ff9f' : '0px 0px 0px #00ff9f'">play_arrow</mat-icon>
+  </button>
+  <button mat-icon-button  id="pause-button" class="button stop2" (click)="pauseVideo()">
+    <mat-icon [style.color]="!playing ? '#00ff9f' : '#000000'"
+              [style.text-shadow]="!playing ? '0px 0px 6px #00ff9f' : '0px 0px 0px #00ff9f'">pause</mat-icon>
+  </button>
+
+
+  <input type="range" min="1" max="100" [(ngModel)]="time" class="sliderDutation2" (ngModelChange)="changeCurrentTime(time)">
+  
+  <input type="range" min="1" max="100" [(ngModel)]="volumn" class="sliderVloumn2" (ngModelChange)="changeVolumn()">
+
+</div>
